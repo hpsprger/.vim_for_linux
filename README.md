@@ -1,0 +1,1 @@
+# .vim_for_linux
