@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+alias ll='ls -alhF'
+alias la='ls -A'
+alias l='ls -CF'
+alias Vim='vim $(fzf)'
+alias create_cscope_ctags_datarep='ctags -n -R --links=yes --c-kinds=+p --fields=+iaKSz --exclude=samples/ --exclude=tools/;cscope -Rbqu; ll'
+alias vim_auto_adapt='~/cscope_edit_path.sh;vim;'
+
+export PATH=:/home/hpsp/rock_space/gdb/gdb-8.3/gdb:/home/hpsp/rock_space/uboot_code/crosstool-ng-1.24.0/.build/arm-hpsp-linux-gnueabi/buildtools/bin:${PATH}
+

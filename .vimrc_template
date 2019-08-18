@@ -1,0 +1,138 @@
+
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'Valloric/YouCompleteMe'
+
+" Initialize plugin system
+call plug#end()
+
+
+
+let Tlist_Auto_Open = 1
+let Tlist_WinWidth = 40  "设置taglist窗口大小
+let Tlist_Use_Right_Window = 1 
+let Tlist_Show_One_File=1 "显示当前文件夹的标签
+
+
+let g:NERDTreeWinSize=35
+let NERDTreeShowBookmarks=1
+
+let g:ycm_global_ycm_extra_conf='/home/hpsp/.vim/bundle/YCM/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tag_files = 1
+
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+let NERDTreeAutoCenterThreshold=1
+let NERDTreeHighlightCursorline=1
+
+" 禁用syntastic来对python检查 let g:syntastic_ignore_files=[".*\.py$"] " 使用ctags生成的tags文件
+let g:ycm_collect_identifiers_from_tag_files = 1
+" 开启语义补全 " 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
+"let g:ycm_key_invoke_completion = '<M-;>' " 设置转到定义处的快捷键为ALT+G，未测出效果
+"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR> "关键字补全
+"let g:ycm_seed_identifiers_with_syntax = 1 " 在接受补全后不分裂出一个窗口显示接受的项
+set completeopt-=preview
+" 让补全行为与一般的IDE一致 set completeopt=longest,menu " 不显示开启vim时检查ycm_extra_conf文件的信息
+let g:ycm_confirm_extra_conf=0
+" 每次重新生成匹配项，禁止缓存匹配项 let g:ycm_cache_omnifunc=0 " 在注释中也可以补全
+let g:ycm_complete_in_comments=1
+" 输入第一个字符就开始补全 let g:ycm_min_num_of_chars_for_completion=1 " 错误标识符
+let g:ycm_error_symbol='>>'
+" 警告标识符 let g:ycm_warning_symbol='>*' " 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
+" let g:ycm_use_ultisnips_completer=0 "
+
+
+ 
+set hlsearch
+set autochdir
+set noscrollbind 
+set cst
+set nocst
+set csto=1
+set nocsverb
+set cscopequickfix=s0,c0,d0,i0,t0,e0,g0
+
+set wildmenu
+set autowrite
+set ruler
+set cindent 
+set smartindent 
+set autoindent "参考上一行的缩进方式进行自动缩进
+filetype indent on "根据文件类型进行缩进
+set softtabstop=4
+set shiftwidth=4
+set smarttab
+set noswapfile
+set nobackup 
+set nowritebackup
+set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp936
+
+set path+=/home/hpsp/rock_space/linux_04_19/linux-4.19.53/include
+set path+=/home/hpsp/rock_space/linux_04_19/linux-4.19.53/arch/arm64/include/
+
+autocmd vimenter * NERDTree
+"autocmd BufWinEnter * NERDTreeFind
+"autocmd BufWinEnter * NERDTreeCWD
+
+botright cwindow
+
+syntax enable
+syntax on
+
+
+set tags=tags;
+cscope add ./cscope.out  replace_current_location_by_yourscript 
+
+set nu
+let g:toggle_nu=1
+function Toggle_nu_set()
+    if g:toggle_nu==1
+         set nonu
+         let g:toggle_nu=0
+    else 
+          set nu
+         let g:toggle_nu=1
+    endif
+endfunc
+
+set mouse=a
+let g:toggle_mouse=1
+function Toggle_mouse_set()
+    if g:toggle_mouse==1
+         set mouse-=a
+         let g:toggle_mouse=0
+    else 
+          set mouse=a
+         let g:toggle_mouse=1
+    endif
+endfunc
+
+
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :Tlist<CR>
+nmap <F4> :call Toggle_nu_set()<CR>
+nmap <F5> :call Toggle_mouse_set()<CR>
+nmap <F6> :call Toggle_nu_set()<CR>:call Toggle_mouse_set()<CR>:Tlist<CR>:NERDTreeToggle<CR>
+nmap <F7> :NERDTreeFind<CR>
+
+nmap <S-p> :cd /home/hpsp/rock_space/linux_04_19/linux-4.19.53/<CR>
+nmap <C-p> :!vim $(fzf)<CR><CR>
+
+nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+
+
+
