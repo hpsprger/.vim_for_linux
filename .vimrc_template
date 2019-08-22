@@ -30,6 +30,7 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
 let NERDTreeAutoCenterThreshold=1
 let NERDTreeHighlightCursorline=1
+let NERDTreeShowHidden=1
 
 " 禁用syntastic来对python检查 let g:syntastic_ignore_files=[".*\.py$"] " 使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1
