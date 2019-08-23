@@ -137,6 +137,10 @@ nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-
+set paste
+"visualmode : copy to "+ register
+vmap <C-c> "+y
+"normal mode : paste from "+ register
+nmap <C-z> "+p
 
 
