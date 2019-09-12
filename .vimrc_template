@@ -91,7 +91,7 @@ syntax on
 
 
 set tags=tags;
-cscope add ./cscope.out  replace_current_location_by_yourscript 
+cscope add ./cscope.out  replace_current_location_by_yourscript -C
 
 set nu
 let g:toggle_nu=1
@@ -136,6 +136,25 @@ nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+hi hi1 ctermfg=black ctermbg=LightRed
+hi hi2 ctermfg=black ctermbg=LightYellow
+hi hi3 ctermfg=black ctermbg=LightBlue
+hi hi4 ctermfg=black ctermbg=LightGreen
+hi hi5 ctermfg=black ctermbg=LightCyan
+
+nmap <C-\>1 :syntax keyword hi1 <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>2 :syntax keyword hi2 <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>3 :syntax keyword hi3 <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>4 :syntax keyword hi4 <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>5 :syntax keyword hi5 <C-R>=expand("<cword>")<CR><CR>
+
+nmap <C-]>1 :syntax clear hi1 <CR><CR>
+nmap <C-]>2 :syntax clear hi2 <CR><CR>
+nmap <C-]>3 :syntax clear hi3 <CR><CR>
+nmap <C-]>4 :syntax clear hi4 <CR><CR>
+nmap <C-]>5 :syntax clear hi5 <CR><CR>
+nmap <C-]>6 :syntax clear hi1 hi2 hi3 hi4 hi5 <CR><CR>
 
 set paste
 "visualmode : copy to "+ register
