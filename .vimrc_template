@@ -11,8 +11,8 @@ Plug 'Valloric/YouCompleteMe'
 
 " Initialize plugin system
 call plug#end()
-
-
+                  
+             
 
 let Tlist_Auto_Open = 1
 let Tlist_WinWidth = 40  "设置taglist窗口大小
@@ -118,6 +118,18 @@ function Toggle_mouse_set()
     endif
 endfunc
 
+let g:toggle_show_tab_space=1
+function Toggle_show_space_tab_set()
+    if g:toggle_show_tab_space==1
+        set list 
+        set listchars=tab:[_,trail:_
+        let g:toggle_show_tab_space=0
+    else
+        set nolist
+        set listchars=tab:[_,trail:_
+        let g:toggle_show_tab_space=1
+    endif
+endfunc
 
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :Tlist<CR>
@@ -125,6 +137,7 @@ nmap <F4> :call Toggle_nu_set()<CR>
 nmap <F5> :call Toggle_mouse_set()<CR>
 nmap <F6> :call Toggle_nu_set()<CR>:call Toggle_mouse_set()<CR>:Tlist<CR>:NERDTreeToggle<CR>
 nmap <F7> :NERDTreeFind<CR>
+nmap <F12> :call Toggle_show_space_tab_set()<CR>
 
 nmap <S-p> :cd /home/hpsp/rock_space/linux_04_19/linux-4.19.53/<CR>
 nmap <C-p> :!vim $(fzf)<CR><CR>
