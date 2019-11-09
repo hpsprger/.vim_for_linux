@@ -131,16 +131,31 @@ function Toggle_show_space_tab_set()
     endif
 endfunc
 
+let g:toggle_cscpfix=1
+function Toggle_cscpfix_set()
+     if g:toggle_cscpfix==1
+         set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-
+         let g:toggle_cscpfix=0
+     else
+         set cscopequickfix=s0,c0,d0,i0,t0,e0,g0,f0
+         let g:toggle_cscpfix=1
+     endif
+endfunc
+
+
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :Tlist<CR>
 nmap <F4> :call Toggle_nu_set()<CR>
 nmap <F5> :call Toggle_mouse_set()<CR>
 nmap <F6> :call Toggle_nu_set()<CR>:call Toggle_mouse_set()<CR>:Tlist<CR>:NERDTreeToggle<CR>
 nmap <F7> :NERDTreeFind<CR>
+nmap <F1> :call Toggle_cscpfix_set()<CR>
 nmap <F12> :call Toggle_show_space_tab_set()<CR>
 
 nmap <S-p> :cd /home/hpsp/rock_space/linux_04_19/linux-4.19.53/<CR>
 nmap <C-p> :!vim $(fzf)<CR><CR>
+nmap <C-n> :cnext<CR><CR>
+nmap <C-b> :cprev<CR><CR>
 
 nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
